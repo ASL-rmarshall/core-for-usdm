@@ -38,10 +38,16 @@ To download YAML rule specifications from the CORE Rules Editor:
 5. Unzip the rule definitions into the resources/local_rules folder
  
 Once the rule definitions have been downloaded, run this program (publish_local_rules.py) to:
-- Remove any rule specifications where the status for the corresponding CORERULES JIRA ticket is not "Unit Testing", "Awaiting QC", "QC in Progress", or "Ready to Publish". Note that a JIRA personal access token (PAT) needs to be created (see "Creating PATs in the application" instructions [here](https://confluence.atlassian.com/enterprise/using-personal-access-tokens-1026032365.html)) and saved in an environment variable called `CONFLUENCE_API_KEY`.
+- Remove any rule specifications where the status for the corresponding CORERULES JIRA ticket is not "Unit Testing", "Awaiting QC", "QC in Progress", or "Ready to Publish".
 - Add a dummy CORE-id, which is required to run validation for local rules.
 
 `python publish_local_rules.py`
+
+### Prerequisites
+  
+Note that the following are required to run this program:
+- A [CDISC JIRA](https://jira.cdisc.org/) account with at least read access to the [CORERULES project](https://jira.cdisc.org/projects/CORERULES).
+- A JIRA personal access token (PAT) (see "Creating PATs in the application" instructions [here](https://confluence.atlassian.com/enterprise/using-personal-access-tokens-1026032365.html)) that has been saved in an environment variable called `CONFLUENCE_API_KEY`.
 
 # Source
 
