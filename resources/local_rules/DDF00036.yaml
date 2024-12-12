@@ -1,0 +1,56 @@
+Authorities:
+- Organization: CDISC
+  Standards:
+  - Name: USDM
+    References:
+    - Citations:
+      - Cited Guidance: If timing type is "Fixed Reference" then the corresponding
+          attribute relativeToFrom must be filled with "Start to Start"
+        Document: USDM_CORE_Rules.xlsx
+      Origin: USDM Conformance Rules
+      Rule Identifier:
+        Id: DDF00036
+        Version: '1'
+      Version: '1.0'
+    Version: '3.0'
+Check:
+  all:
+  - name: instanceType
+    operator: equal_to
+    value: Timing
+  - name: rel_type
+    operator: equal_to
+    value: definition
+  - name: type.decode
+    operator: equal_to
+    value: Fixed Reference
+  - any:
+    - name: relativeToFrom.decode
+      operator: empty
+    - name: relativeToFrom.decode
+      operator: not_equal_to
+      value: Start to Start
+Core:
+  Id: DDF00036-READY_TO_PUBLISH
+  Status: Draft
+  Version: '1'
+Description: If timing type is "Fixed Reference" then the corresponding attribute
+  relativeToFrom must be filled with "Start to Start"
+Executability: Fully Executable
+Outcome:
+  Message: Type is "Fixed Reference" for the timing but relativeToFrom is not "Start
+    to Start" (case sensitive)
+  Output Variables:
+  - parent_entity
+  - parent_id
+  - parent_rel
+  - id
+  - name
+  - type.decode
+  - relativeToFrom.decode
+Rule Type: Record Data
+Scope:
+  Entities:
+    Include:
+    - Timing
+Sensitivity: Record
